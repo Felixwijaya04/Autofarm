@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class DraggableObj : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject TypeOfCmd; // Prefab to be cloned
+    public RectTransform codeSlot;
     private GameObject duplicatedObj;
     private Canvas parentCanvas;
 
@@ -43,5 +44,14 @@ public class DraggableObj : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("End Drag");
+        if (RectTransformUtility.RectangleContainsScreenPoint(codeSlot, Input.mousePosition, null))
+        {
+            Debug.Log("Object is inside the target image area.");
+        }
+        else
+        {
+            Debug.Log("Object is outside the target image area.");
+            Destroy(duplicatedObj);
+        }
     }
 }
