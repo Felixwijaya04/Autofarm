@@ -5,11 +5,14 @@ using UnityEngine.EventSystems;
 
 public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public RectTransform codeSlot;
+    public RectTransform[] codeSlot;
+    Transform parentAfterDrag;
     
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
+        parentAfterDrag = transform.parent;
+        transform.SetParent(transform.root);
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -19,14 +22,22 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(codeSlot, Input.mousePosition, null))
+        bool insideSlot = false;
+        foreach (var slot in codeSlot)
         {
-            Debug.Log("Object is inside the target image area.");
+            if (RectTransformUtility.RectangleContainsScreenPoint(slot, Input.mousePosition, null))
+            {
+                Debug.Log("Object is inside the target image area.");
+                parentAfterDrag = slot;
+                transform.SetParent(parentAfterDrag);
+                insideSlot = true;
+                break;
+            }
         }
-        else
+        if (insideSlot == false)
         {
-            Debug.Log("Object is outside the target image area.");
             Destroy(gameObject);
         }
+        
     }
 }
