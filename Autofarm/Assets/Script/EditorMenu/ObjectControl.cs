@@ -7,7 +7,12 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     public RectTransform[] codeSlot;
     Transform parentAfterDrag;
-    
+    private Compiler compiler;
+
+    private void Start()
+    {
+        compiler = FindObjectOfType<Compiler>();
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentAfterDrag = transform.parent;
@@ -31,6 +36,12 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 parentAfterDrag = slot;
                 transform.SetParent(parentAfterDrag);
                 insideSlot = true;
+
+                BaseFunction function = GetComponent<BaseFunction>();
+                if(function != null)
+                {
+                    compiler.AddFunction(function);
+                }
                 break;
             }
         }
