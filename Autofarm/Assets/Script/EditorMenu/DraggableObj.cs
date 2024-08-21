@@ -7,6 +7,7 @@ public class DraggableObj : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 {
     public GameObject TypeOfCmd; // Prefab to be cloned
     public RectTransform codeSlot;
+    Transform parentAfterDrag;
     private GameObject duplicatedObj;
     private Canvas parentCanvas;
 
@@ -23,6 +24,10 @@ public class DraggableObj : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             duplicatedObj.SetActive(true);
             Debug.Log("Duplicated Object Position: " + duplicatedObj.transform.position);
+
+            /*parentAfterDrag = duplicatedObj.transform.parent;
+            duplicatedObj.transform.SetParent(transform.root);
+            duplicatedObj.transform.SetAsLastSibling();*/
         }
         else
         {
@@ -43,7 +48,22 @@ public class DraggableObj : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("End Drag");
+        //bool insideSlot = false;
+        /*foreach(var slot in codeSlot)
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(slot, Input.mousePosition, null))
+            {
+                Debug.Log("Object is inside the target image area.");
+                parentAfterDrag = slot;
+                duplicatedObj.transform.SetParent(parentAfterDrag);
+                insideSlot = true;
+            }
+        }
+        if(insideSlot == false)
+        {
+            Destroy(gameObject);
+        }*/
+
         if (RectTransformUtility.RectangleContainsScreenPoint(codeSlot, Input.mousePosition, null))
         {
             Debug.Log("Object is inside the target image area.");

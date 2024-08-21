@@ -223,14 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e23fb98af33dca43bbc49a2753a3dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codeSlot:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  codeSlots:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

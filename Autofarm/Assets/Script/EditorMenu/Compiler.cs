@@ -7,22 +7,6 @@ public abstract class BaseFunction : MonoBehaviour
     public abstract void Execute();
 }
 
-public class Plant : BaseFunction
-{
-    public override void Execute()
-    {
-        Debug.Log("Menanam");
-    }
-}
-
-public class Water : BaseFunction
-{
-    public override void Execute()
-    {
-        Debug.Log("Menyiram");
-    }
-}
-
 public class loop : BaseFunction
 {
     public override void Execute()

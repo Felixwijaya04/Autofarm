@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public RectTransform[] codeSlot;
+    public RectTransform[] codeSlots;
     Transform parentAfterDrag;
     private Compiler compiler;
 
@@ -28,7 +28,7 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         bool insideSlot = false;
-        foreach (var slot in codeSlot)
+        foreach (var slot in codeSlots)
         {
             if (RectTransformUtility.RectangleContainsScreenPoint(slot, Input.mousePosition, null))
             {
@@ -38,8 +38,9 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 insideSlot = true;
 
                 BaseFunction function = GetComponent<BaseFunction>();
-                if(function != null)
+                if (function != null)
                 {
+                    Debug.Log("From ObjControl.cs: Function added");
                     compiler.AddFunction(function);
                 }
                 break;
@@ -49,6 +50,30 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             Destroy(gameObject);
         }
-        
+        /*bool insideSlot = false;
+        for (int i = 0; i < codeSlots.Length; i++)
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(codeSlots[i], Input.mousePosition, null))
+            {
+                Debug.Log("Object is inside the target image area.");
+                parentAfterDrag = codeSlots[i];
+                transform.SetParent(parentAfterDrag, false); // Set the parent without changing the local position
+                insideSlot = true;
+
+                // Add the function to the CodeExecutor at the correct position
+                BaseFunction function = GetComponent<BaseFunction>();
+                if (function != null)
+                {
+                    compiler.functions.Insert(i, function);
+                }
+                break;
+            }
+        }
+
+        if (!insideSlot)
+        {
+            Debug.Log("Object is outside the target image areas.");
+            Destroy(gameObject);
+        }*/
     }
 }
