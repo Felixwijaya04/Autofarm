@@ -18,20 +18,12 @@ public class DraggableObj : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Begin Drag");
+        //Debug.Log("Begin Drag");
         duplicatedObj = Instantiate(TypeOfCmd, transform.position, Quaternion.identity, parentCanvas.transform);
         if (duplicatedObj != null)
         {
             duplicatedObj.SetActive(true);
-            Debug.Log("Duplicated Object Position: " + duplicatedObj.transform.position);
-
-            /*parentAfterDrag = duplicatedObj.transform.parent;
-            duplicatedObj.transform.SetParent(transform.root);
-            duplicatedObj.transform.SetAsLastSibling();*/
-        }
-        else
-        {
-            Debug.LogError("Failed to instantiate duplicated object!");
+            //Debug.Log("Duplicated Object Position: " + duplicatedObj.transform.position);
         }
     }
 
@@ -42,35 +34,20 @@ public class DraggableObj : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out Vector2 localPoint);
             duplicatedObj.GetComponent<RectTransform>().localPosition = localPoint;
-            Debug.Log("Dragging Position: " + duplicatedObj.transform.localPosition);
+            //Debug.Log("Dragging Position: " + duplicatedObj.transform.localPosition);
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //bool insideSlot = false;
-        /*foreach(var slot in codeSlot)
-        {
-            if (RectTransformUtility.RectangleContainsScreenPoint(slot, Input.mousePosition, null))
-            {
-                Debug.Log("Object is inside the target image area.");
-                parentAfterDrag = slot;
-                duplicatedObj.transform.SetParent(parentAfterDrag);
-                insideSlot = true;
-            }
-        }
-        if(insideSlot == false)
-        {
-            Destroy(gameObject);
-        }*/
 
         if (RectTransformUtility.RectangleContainsScreenPoint(codeSlot, Input.mousePosition, null))
         {
-            Debug.Log("Object is inside the target image area.");
+            //Debug.Log("Object is inside the target image area.");
         }
         else
         {
-            Debug.Log("Object is outside the target image area.");
+            //Debug.Log("Object is outside the target image area.");
             Destroy(duplicatedObj);
         }
     }

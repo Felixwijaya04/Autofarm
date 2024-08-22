@@ -9,28 +9,65 @@ public abstract class BaseFunction : MonoBehaviour
 public class Compiler : MonoBehaviour
 {
     public RectTransform[] codeSlots;
-    public List<BaseFunction> ExpectedFunctions;
+    [SerializeField] private LevelMaker[] levelMaker;
+    public int levels = 0;
+    //private bool NextLevel = false;
 
     public void checkAnswer()
     {
-        for(int i=0;i<codeSlots.Length; i++)
+        /*for(int i=0;i<codeSlots.Length; i++)
         {
             BaseFunction attachedFunction = codeSlots[i].GetComponentInChildren<BaseFunction>();
             if(attachedFunction != null)
             {
-                if (attachedFunction.GetType() == ExpectedFunctions[i].GetType())
+                if (attachedFunction.GetType() == levelMaker[levels].ExpectedFunctions[i].GetType())
                 {
-                    Debug.Log("benar");
+                    Debug.Log("benar " + levels);
+                    NextLevel = true;
                 }
                 else
                 {
-                    Debug.Log("salah");
+                    Debug.Log("salah " + levels);
+                    NextLevel = false;
                 }
             }
             else
             {
-                Debug.Log("incomplete answer");
+                Debug.Log("incomplete answer " + levels);
+                NextLevel = false;
             }
+        }
+        if(NextLevel == true)
+        {
+            levels++;
+        }*/
+        bool allCorrect = true;
+
+        for (int i = 0; i < codeSlots.Length; i++)
+        {
+            BaseFunction attachedFunction = codeSlots[i].GetComponentInChildren<BaseFunction>();
+            if (attachedFunction != null)
+            {
+                if (attachedFunction.GetType() == levelMaker[levels].ExpectedFunctions[i].GetType())
+                {
+                    Debug.Log("benar " + levels);
+                }
+                else
+                {
+                    Debug.Log("salah " + levels);
+                    allCorrect = false;
+                }
+            }
+            else
+            {
+                Debug.Log("incomplete answer " + levels);
+                allCorrect = false;
+            }
+        }
+
+        if (allCorrect)
+        {
+            levels++;
         }
     }
 }
