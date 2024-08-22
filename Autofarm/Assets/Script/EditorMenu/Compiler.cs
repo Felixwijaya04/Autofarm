@@ -6,28 +6,31 @@ public abstract class BaseFunction : MonoBehaviour
 {
     public abstract void Execute();
 }
-
-public class loop : BaseFunction
-{
-    public override void Execute()
-    {
-        Debug.Log("Looping..");
-    }
-}
 public class Compiler : MonoBehaviour
 {
-    public List<BaseFunction> functions = new List<BaseFunction>();
+    public RectTransform[] codeSlots;
+    public List<BaseFunction> ExpectedFunctions;
 
-    public void AddFunction(BaseFunction function)
+    public void checkAnswer()
     {
-        functions.Add(function);
-    }
-
-    public void ExecuteAll()
-    {
-        foreach (var function in functions)
+        for(int i=0;i<codeSlots.Length; i++)
         {
-            function.Execute();
+            BaseFunction attachedFunction = codeSlots[i].GetComponentInChildren<BaseFunction>();
+            if(attachedFunction != null)
+            {
+                if (attachedFunction.GetType() == ExpectedFunctions[i].GetType())
+                {
+                    Debug.Log("benar");
+                }
+                else
+                {
+                    Debug.Log("salah");
+                }
+            }
+            else
+            {
+                Debug.Log("incomplete answer");
+            }
         }
     }
 }
