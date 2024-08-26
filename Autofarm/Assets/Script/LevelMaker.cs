@@ -6,4 +6,5 @@ public class LevelMaker : MonoBehaviour
 {
     [Header("Answers In Order")]
     public List<BaseFunction> ExpectedFunctions;
+    public List<string> ExpectedText;
 }

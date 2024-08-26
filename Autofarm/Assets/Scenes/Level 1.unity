@@ -2563,6 +2563,9 @@ MonoBehaviour:
   ExpectedFunctions:
   - {fileID: 1737506413}
   - {fileID: 1019777035}
+  ExpectedText:
+  - Cactus
+  - 1500
 --- !u!4 &920260277
 Transform:
   m_ObjectHideFlags: 0
@@ -2961,6 +2964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ef8ece00be9ba4ea1981b7f49cef30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputfield: {fileID: 0}
+  textbox: {fileID: 366085991}
 --- !u!1 &1149301374
 GameObject:
   m_ObjectHideFlags: 0
@@ -4037,6 +4042,10 @@ MonoBehaviour:
   - {fileID: 1737506413}
   - {fileID: 1019777035}
   - {fileID: 1019777035}
+  ExpectedText:
+  - Tree
+  - 100
+  - 200
 --- !u!4 &1685664313
 Transform:
   m_ObjectHideFlags: 0
@@ -4171,6 +4180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df0756a11efca247aca436e6392cca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textbox: {fileID: 1765285793}
 --- !u!1 &1765285791
 GameObject:
   m_ObjectHideFlags: 0

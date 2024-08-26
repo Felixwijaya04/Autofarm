@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.IO;
 
 public abstract class BaseFunction : MonoBehaviour
 {
     public abstract void Execute();
+    public abstract string GetTextBoxContent();
 }
 public class Compiler : MonoBehaviour
 {
     public RectTransform[] codeSlots;
     [SerializeField] private LevelMaker[] levelMaker;
-    public List<string> TextBox;
     [HideInInspector]public int levels = 0;
 
     public void checkAnswer()
@@ -27,7 +28,17 @@ public class Compiler : MonoBehaviour
             {
                 if (attachedFunction.GetType() == levelMaker[levels].ExpectedFunctions[i].GetType())
                 {
-                    Debug.Log("benar " + levels);
+                    string inputText = attachedFunction.GetTextBoxContent();
+                    if (levelMaker[levels].ExpectedText[i] == inputText)
+                    {
+                        Debug.Log("benar text " + levels);
+                    }
+                    else
+                    {
+                        Debug.Log("salah text");
+                        allCorrect = false;
+                    }
+                    
                 }
                 else
                 {
