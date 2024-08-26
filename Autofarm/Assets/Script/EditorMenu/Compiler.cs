@@ -11,6 +11,7 @@ public class Compiler : MonoBehaviour
 {
     public RectTransform[] codeSlots;
     [SerializeField] private LevelMaker[] levelMaker;
+    public List<string> TextBox;
     [HideInInspector]public int levels = 0;
 
     public void checkAnswer()
