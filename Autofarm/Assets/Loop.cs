@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-//[CreateAssetMenu(fileName = "Water", menuName ="functions/water")]
-public class Water : BaseFunction
+public class Loop : BaseFunction
 {
     public TMP_InputField textbox;
     public override void Execute()
     {
-        Debug.Log("Menyiram");
+        Debug.Log("Looping");
     }
 
     public override string GetTextBoxContent()
