@@ -35,20 +35,20 @@ public class Compiler : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("salah text");
+                        Debug.Log("Output Wrong");
                         allCorrect = false;
                     }
                     
                 }
                 else
                 {
-                    Debug.Log("salah " + levels);
+                    Debug.Log("Output Wrong" + levels);
                     allCorrect = false;
                 }
             }
             else
             {
-                Debug.Log("incomplete answer " + levels);
+                Debug.Log("Output Wrong" + levels);
                 allCorrect = false;
             }
         }
