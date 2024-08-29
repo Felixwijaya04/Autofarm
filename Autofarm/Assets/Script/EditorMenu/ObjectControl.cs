@@ -33,6 +33,7 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 parentAfterDrag = slot;
                 transform.SetParent(parentAfterDrag,false);
                 transform.localScale = originalScale;
+                //transform.localScale = slot.localScale;
                 insideSlot = true;
                 break;
             }
