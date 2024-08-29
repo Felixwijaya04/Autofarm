@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class Endsmth : BaseFunction
+public class If : BaseFunction
 {
     public TMP_InputField textbox;
     public override void Execute()
     {
-        Debug.Log("End Loop");
+        Debug.Log("If smth");
     }
 
     public override string GetTextBoxContent()
