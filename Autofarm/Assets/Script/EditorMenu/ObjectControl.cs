@@ -8,10 +8,12 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public RectTransform[] codeSlots;
     Transform parentAfterDrag;
     private Vector3 originalScale;
-
-    public void OnBeginDrag(PointerEventData eventData)
+    private void Start()
     {
         originalScale = transform.localScale;
+    }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
