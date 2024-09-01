@@ -12,33 +12,47 @@ public abstract class BaseFunction : MonoBehaviour
 public class Compiler : MonoBehaviour
 {
     public RectTransform[] codeSlots;
-    [SerializeField] private LevelMaker[] levelMaker;
+    [SerializeField]public LevelMaker[] levelMaker;
     [HideInInspector]public int levels = 0;
+    [HideInInspector]public int maxLevels;
 
+    private void Start()
+    {
+        maxLevels = levelMaker.Length;
+        Debug.Log("MaxLevel:  " + maxLevels);
+    }
     public void checkAnswer()
     {
-        bool allCorrect = true;
-        int len = levelMaker[levels].ExpectedFunctions.Count;
-        Debug.Log("len"+ len);
-        for (int i = 0; i < len; i++)
+        if(levels < maxLevels)
         {
-            BaseFunction attachedFunction = codeSlots[i].GetComponentInChildren<BaseFunction>();
-            Debug.Log("Attached Function at slot " + i + ": " + (attachedFunction != null ? attachedFunction.GetType().Name : "null"));
-            if (attachedFunction != null)
+            bool allCorrect = true;
+            int len = levelMaker[levels].ExpectedFunctions.Count;
+            Debug.Log("len" + len);
+            for (int i = 0; i < len; i++)
             {
-                if (attachedFunction.GetType() == levelMaker[levels].ExpectedFunctions[i].GetType())
+                BaseFunction attachedFunction = codeSlots[i].GetComponentInChildren<BaseFunction>();
+                Debug.Log("Attached Function at slot " + i + ": " + (attachedFunction != null ? attachedFunction.GetType().Name : "null"));
+                if (attachedFunction != null)
                 {
-                    string inputText = attachedFunction.GetTextBoxContent();
-                    if (levelMaker[levels].ExpectedText[i] == inputText)
+                    if (attachedFunction.GetType() == levelMaker[levels].ExpectedFunctions[i].GetType())
                     {
-                        Debug.Log("benar text " + levels);
+                        string inputText = attachedFunction.GetTextBoxContent();
+                        if (levelMaker[levels].ExpectedText[i] == inputText)
+                        {
+                            Debug.Log("benar text " + levels);
+                        }
+                        else
+                        {
+                            Debug.Log("Output Wrong");
+                            allCorrect = false; break;
+                        }
+
                     }
                     else
                     {
-                        Debug.Log("Output Wrong");
+                        Debug.Log("Output Wrong" + levels);
                         allCorrect = false; break;
                     }
-                    
                 }
                 else
                 {
@@ -46,17 +60,16 @@ public class Compiler : MonoBehaviour
                     allCorrect = false; break;
                 }
             }
-            else
+
+            if (allCorrect)
             {
-                Debug.Log("Output Wrong" + levels);
-                allCorrect = false; break;
+                levels++;
+                Debug.Log("Going next level is " + levels);
             }
         }
-
-        if (allCorrect)
+        else
         {
-            levels++;
-            Debug.Log("Going next level is " + levels);
+            Debug.Log("You have finished all levels");
         }
     }
 }
