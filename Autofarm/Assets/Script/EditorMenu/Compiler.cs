@@ -36,26 +36,27 @@ public class Compiler : MonoBehaviour
                     else
                     {
                         Debug.Log("Output Wrong");
-                        allCorrect = false;
+                        allCorrect = false; break;
                     }
                     
                 }
                 else
                 {
                     Debug.Log("Output Wrong" + levels);
-                    allCorrect = false;
+                    allCorrect = false; break;
                 }
             }
             else
             {
                 Debug.Log("Output Wrong" + levels);
-                allCorrect = false;
+                allCorrect = false; break;
             }
         }
 
         if (allCorrect)
         {
             levels++;
+            Debug.Log("Going next level is " + levels);
         }
     }
 }

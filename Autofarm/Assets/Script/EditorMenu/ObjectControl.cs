@@ -31,7 +31,7 @@ public class ObjectControl : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             if (RectTransformUtility.RectangleContainsScreenPoint(slot, Input.mousePosition, null))
             {
-                Debug.Log("Object is inside the target image area.");
+                //Debug.Log("Object is inside the target image area.");
                 parentAfterDrag = slot;
                 transform.SetParent(parentAfterDrag,false);
                 transform.localScale = originalScale;
