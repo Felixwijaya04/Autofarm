@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 583078602d813f546a5e1f60cd003a4f
+guid: b6842c0bbeea6e848a7aa0ca61c51f33
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -71,7 +71,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -97,12 +97,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LogoLobby_0
+      name: BGCode (2)_0
       rect:
         serializedVersion: 2
-        x: 216
+        x: 217
         y: 230
-        width: 1488
+        width: 1486
         height: 605
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1e079723c17aca47a369610848fa9e2
-      internalID: 24626108
+      spriteID: 83ff80025e1e01f43867e47f767a203f
+      internalID: 690315061
       vertices: []
       indices: 
       edges: []
@@ -120,7 +120,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d9293e37934f63148a8b8bb6897c529b
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LogoLobby_0: 24626108
+      BGCode (2)_0: 690315061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
