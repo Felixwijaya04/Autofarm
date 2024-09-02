@@ -9,21 +9,26 @@ public abstract class BaseFunction : MonoBehaviour
     public abstract void Execute();
     public abstract string GetTextBoxContent();
 }
+
 public class Compiler : MonoBehaviour
 {
     public RectTransform[] codeSlots;
-    [SerializeField]public LevelMaker[] levelMaker;
-    [HideInInspector]public int levels = 0;
-    [HideInInspector]public int maxLevels;
+    [SerializeField] public LevelMaker[] levelMaker;
+    [HideInInspector] public int levels = 0;
+    [HideInInspector] public int maxLevels;
+
+   
+    public Animator animator;
 
     private void Start()
     {
         maxLevels = levelMaker.Length;
-        Debug.Log("MaxLevel:  " + maxLevels);
+        Debug.Log("MaxLevel: " + maxLevels);
     }
+
     public void checkAnswer()
     {
-        if(levels < maxLevels)
+        if (levels < maxLevels)
         {
             bool allCorrect = true;
             int len = levelMaker[levels].ExpectedFunctions.Count;
@@ -44,20 +49,22 @@ public class Compiler : MonoBehaviour
                         else
                         {
                             Debug.Log("Output Wrong");
-                            allCorrect = false; break;
+                            allCorrect = false;
+                            break;
                         }
-
                     }
                     else
                     {
                         Debug.Log("Output Wrong" + levels);
-                        allCorrect = false; break;
+                        allCorrect = false;
+                        break;
                     }
                 }
                 else
                 {
                     Debug.Log("Output Wrong" + levels);
-                    allCorrect = false; break;
+                    allCorrect = false;
+                    break;
                 }
             }
 
@@ -66,10 +73,23 @@ public class Compiler : MonoBehaviour
                 levels++;
                 Debug.Log("Going next level is " + levels);
             }
+            else
+            {
+                
+                animator.SetBool("isSubmitWrong", true);
+                StartCoroutine(ResetAnimation());
+            }
         }
         else
         {
             Debug.Log("You have finished all levels");
         }
+    }
+
+  
+    private IEnumerator ResetAnimation()
+    {
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("isSubmitWrong", false);
     }
 }
