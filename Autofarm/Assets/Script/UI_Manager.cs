@@ -34,9 +34,4 @@ public class UI_Manager : MonoBehaviour
             panel[compiler.levels].SetActive(true);
         }
     }
-
-    public void changeScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
 }
