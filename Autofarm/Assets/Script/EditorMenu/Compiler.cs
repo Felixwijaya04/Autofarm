@@ -18,7 +18,7 @@ public class Compiler : MonoBehaviour
     [HideInInspector] public int maxLevels;
 
    
-    //public Animator animator;
+    public Animator animator;
 
     private void Start()
     {
@@ -76,7 +76,7 @@ public class Compiler : MonoBehaviour
             else
             {
                 
-                //animator.SetBool("isSubmitWrong", true);
+                animator.SetBool("isSubmitWrong", true);
                 StartCoroutine(ResetAnimation());
             }
         }
@@ -90,6 +90,6 @@ public class Compiler : MonoBehaviour
     private IEnumerator ResetAnimation()
     {
         yield return new WaitForSeconds(2f);
-        //animator.SetBool("isSubmitWrong", false);
+        animator.SetBool("isSubmitWrong", false);
     }
 }
